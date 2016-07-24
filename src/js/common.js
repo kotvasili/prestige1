@@ -7,5 +7,6 @@
 //= lib/TimelineLite.min.js
 //= lib/CSSPlugin.min.js
 //= lib/isotope.pkgd.min.js
+//= lib/slick.min.js
 
 //= app.js

@@ -497,5 +497,19 @@ $(document).ready(function () {
 		})
 	}
 
+$('.project__gallery').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  fade: true,
+  dotsClass: 'project__galery-nav',
+  dots:true,
+  appendArrows: $('.galery__nav'),
+  nextArrow:'<button type="button" class="carousel-next"><div class="icon"><svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg"><path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path><path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path></svg></div></button>',
+  prevArrow:'<button type="button" class="carousel-prev"><div class="icon"><svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg"><path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path><path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path></svg></div></button>',
+ 
+});
 
 });
+
+ 
