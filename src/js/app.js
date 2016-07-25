@@ -497,19 +497,70 @@ $(document).ready(function () {
 		})
 	}
 
+if ($('.number').length) {
+		currentSlide($('.project__gallery'));
+	}
+
+function currentSlide(number){
+var $status = $('.number>span');
+var $slickElement = $('.project__gallery');
+var $sum = $('.number__sum span');
+		
+		$slickElement.on('beforeChange', function (){
+			$status.parent().animate({
+				opacity:0,
+				bottom:'4%',
+			},200);
+		});
+    $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+     $status.parent().animate({
+				opacity:1,
+				bottom:'7%',
+			},200);
+     if(slick.slideCount<10){
+     	$sum.text('0'+slick.slideCount);
+     }
+     else{
+     	$sum.text(slick.slideCount);
+     }
+        let i = (currentSlide ? currentSlide : 0) + 1;
+        	if (i<10) {
+        		i = '0'+i;
+        	}
+        $status.text(i);
+    });
+
+};
+
+
+
 $('.project__gallery').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: true,
   fade: true,
+  asNavFor: '.galery__description',
   dotsClass: 'project__galery-nav',
   dots:true,
   appendArrows: $('.galery__nav'),
   nextArrow:'<button type="button" class="carousel-next"><div class="icon"><svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg"><path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path><path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path></svg></div></button>',
   prevArrow:'<button type="button" class="carousel-prev"><div class="icon"><svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg"><path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path><path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path></svg></div></button>',
- 
+ 	onInit: function(e){
+    $el.append('<div class="slick-counter">'+ parseInt(e.currentSlide + 1, 10) +' / '+ e.slideCount +'</div>');
+  },
+  onAfterChange: function(e){
+    $el.find('.slick-counter').html(e.currentSlide + 1 +' / '+e.slideCount);
+  }
+});
+$('.galery__description').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  asNavFor: '.project__gallery',
+  arrows:false,
+  dots: false,
 });
 
-});
 
+
+});
  

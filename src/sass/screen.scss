@@ -2329,6 +2329,9 @@ body {
 			top: 50%;
 			transform: translateY(-50%);
 		}
+		&.head-about{
+			@include x-rem(height, 425px);
+		}
 	}
 	.lead {
 		position: absolute;
@@ -2439,6 +2442,14 @@ body {
 	width: 100%;
 	min-height:100px;
 	z-index: 2;
+	.presents__head{
+		font-family: $PragmaticaBold;
+			@include x-rem(font-size, 36px);
+			color: $white;
+			width: 100%;
+			@include x-rem(padding-left, 261px);
+			@include x-rem(margin-bottom, 55px);
+	}
 	.product_selector{
 		margin-left: 0;
 		@include x-rem(max-width, 1150px);
@@ -2463,6 +2474,16 @@ body {
 				p {
 					@include x-rem(letter-spacing, 0.8px);
 				}
+				&.text-first{
+				@include x-rem(font-size, 14px);
+				text-transform: uppercase;
+				p{
+				@include x-rem(letter-spacing, 4px);
+			}
+			}
+			&.text-second{
+				@include x-rem(padding-top, 55px);
+			}
 			}
 		}
 		.photo_left{
@@ -2508,74 +2529,26 @@ body {
 	@include x-rem(margin, 45px 0 0);
 	position: relative;
 	display: inline-block;
-	width: 100%;
+	@include x-rem(max-width, 1080px);
 	z-index:2;
+	float:left;
 .project__galery-item{
-	@include x-rem(max-width, 1210px);
+	width:100%;
 	position: relative;
 }
 .item_photo{
-	@include x-rem(max-width, 1080px);
+	width:100%;
 	display: inline-block;
 	float: left;
 	overflow:hidden;
 }
-.item__description{
-	position: absolute;
-	right:0;
-	bottom:-7%;
-	@include x-rem(width, 130px);
-	display: inline-block;
-	height: 100%;
-	min-height:1px;
-	color: $white;
-	@include x-rem(margin-left,65px);
-	
-	.heading{
-	@include x-rem(min-width, 400px);
-	display: inline-block;
-	vertical-align:bottom;
-	transform:rotate(270deg);
-	transform-origin: left bottom;
-	position: absolute;
-	bottom: 80px;
-	left: 100px;
-	@include x-rem(font-size, 18px);
-	font-family: $PragmaticaBold;
-	line-height:1.6;
-	letter-spacing:1.5px;
-	span{
-		font-weight:300;
-		font-family:$PragmaticaBook;
-		@include x-rem(font-size, 14px);
-	}
 }
-	.number{
-		display: inline-block;
-		position: absolute;
-		bottom:0;
-		right: 0;
-		@include x-rem(font-size, 46px)
-		font-weight: 600;
-		color:$red;
-		font-family: $PragmaticaBold;
-		letter-spacing: 4px;
-		span{
-			vertical-align: bottom;
-			line-height: 0.8;
-		}
-		.number__sum{
-			display: inline-block;
-			position: absolute;
-			top: 10px;
-			right: -20px;
-			color:$grey;
-			@include x-rem(font-size, 12px)
-			font-family: $PragmaticaBook;
-			font-weight: 300;
-		}
-	}
-}
+.galery__nav{
+	width:90%;
+	position: relative;
+	height:100%;
+	position: absolute;
+	top:0;
 }
 .project__galery-nav{
 	@include x-rem(max-width,1080px);
@@ -2594,6 +2567,11 @@ body {
 	border-bottom-color:$white;
 	button{
 		color:transparent;
+		width: 100%;
+		height:100%;
+		&:hover{
+			cursor: pointer;
+		}
 	}
 }
 	.slick-active{
@@ -2606,7 +2584,71 @@ body {
 .wrapper__galery{
 	position:relative;
 	@include x-rem(padding, 0 90px 0 150px);
+	@include clearfix
+	overflow: hidden;
+	z-index: 2;
+			.number{
+			display: inline-block;
+			@include x-rem(margin-top,50px);
+			@include x-rem(font-size, 46px)
+			position: absolute;
+			bottom: 7%;
+			right: 0;
+			font-weight: 600;
+			color:$red;
+			font-family: $PragmaticaBold;
+			letter-spacing: 4px;
+			float: right;
+			span{
+				vertical-align: bottom;
+				line-height: 0.8;
+			}
+		}
+		.number__sum{
+				display: inline-block;
+				position: absolute;
+				color:$grey;
+				@include x-rem(font-size, 12px)
+				font-family: $PragmaticaBook;
+				font-weight: 300;
+				bottom: 9.7%;
+				right:-20%;
+			}
 }
+.galery__description-wrapper{
+	@include x-rem(width, 100px);
+	@include x-rem(height, 850px);
+	@include x-rem(padding-bottom, 150px);
+	display: inline-block;
+	position: absolute;
+	height:100%;
+	z-index: 2;
+	}
+
+.galery__description{
+	transform:rotate(270deg);
+	transform-origin:15% 50% ;
+		@include x-rem(width, 500px);
+	@include x-rem(height, 80px);
+	position: absolute;
+	bottom:20%;
+	display: inline-block;
+		.item__description{
+			color:$white;
+			font-weight:600;
+			@include x-rem(font-size, 18px);
+			.heading{
+			font-family: $PragmaticaBold;
+			line-height:1.6;
+			letter-spacing:1.5px;
+			span{
+				font-weight:300;
+				font-family:$PragmaticaBook;
+				@include x-rem(font-size, 14px);
+					}
+			}
+			}
+		}
 .slick-arrow{
 	top: 0;
 	width:40%;
@@ -2627,6 +2669,7 @@ body {
 		}
 	}
 	&:hover{
+		cursor: pointer;
 		.stroke{
 			stroke:$red;
 			transition:all 0.3s ease;
@@ -2643,18 +2686,13 @@ body {
 		left:100px;
 		bottom:100px;
 	}
-	&:hover{
-		cursor:e-resize;
-	}
+
 }
 .carousel-prev{
 	.icon{
 		transform:rotate(180deg);
 		top:150px;
 		left:110px;
-	}
-	&:hover{
-		cursor: w-resize;
 	}
 }
 .kredo{
@@ -2733,4 +2771,29 @@ body {
 .fact_2{
 	margin-left:31.9% !important;
 	@include x-rem(margin-top,55px);
+}
+.product-about{
+	.product_selector-item:not(:first-child){
+		padding-left: 0;
+	}
+	.big-text{
+		margin-left:3rem !important;
+	}
+}
+.presents__block{
+	color:$white;
+	display: inline-block;
+	width:31.9%;
+	line-height: 1.875;
+	&.block-text{
+		float: left;
+		@include x-rem(margin-left,360px);
+		@include x-rem(max-width,380px);
+		@include x-rem(padding-left,20px);
+ 	 	@include x-rem(font-size,16px);
+	}
+	&.block-img{
+		float: left;
+		@include x-rem(margin-left,60px);
+	}
 }
