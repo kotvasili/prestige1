@@ -2449,6 +2449,10 @@ body {
 			width: 100%;
 			@include x-rem(padding-left, 261px);
 			@include x-rem(margin-bottom, 55px);
+			&.presents-partners{
+				@include x-rem(padding-left,320px);
+				@include x-rem(margin-top, 50px);
+			}
 	}
 	.product_selector{
 		margin-left: 0;
@@ -2467,9 +2471,7 @@ body {
 					@include x-rem(padding-left, 18px);
 				}
 			}
-			&:last-child {
-				@include x-rem(margin-left, 38px);
-			}
+
 			.text {
 				p {
 					@include x-rem(letter-spacing, 0.8px);
@@ -2777,23 +2779,118 @@ body {
 		padding-left: 0;
 	}
 	.big-text{
-		margin-left:3rem !important;
+		float: right!important;
 	}
+}
+.task-presents{
+	@include x-rem(padding-right, 70px);
 }
 .presents__block{
 	color:$white;
 	display: inline-block;
 	width:31.9%;
+	min-height:1px;
 	line-height: 1.875;
+	float: left;
 	&.block-text{
-		float: left;
-		@include x-rem(margin-left,360px);
-		@include x-rem(max-width,380px);
-		@include x-rem(padding-left,20px);
- 	 	@include x-rem(font-size,16px);
-	}
+		@include x-rem(max-width,362px);	}
 	&.block-img{
+		@include x-rem(margin-left,35px);
+		overflow: hidden;
+	}
+	&.block-float{
+  	@include x-rem(font-size,20px);
+  	text-transform: uppercase;
+		font-family: $PragmaticaBlack;
+		@include x-rem(letter-spacing,4px);
+		@include x-rem(width,530px);
+		position: absolute;
+		bottom:-20%;
+		right: 25%;
+		.presents-article{
+			@include x-rem(font-size,12px);
+			font-family:$PragmaticaBook;
+			@include x-rem(letter-spacing,4px);
+			@include x-rem(font-size,20px);
+		}
+	}
+}
+.presents__carousel{
+	@include x-rem(height,256px);
+	@include x-rem(margin-bottom,40px);
+	display:flex;
+	@include x-rem(padding-left,20px);
+	.presents__wrapper{
+		@include x-rem(width,990px);
+		height:100%;
+		display: inline-block;
 		float: left;
-		@include x-rem(margin-left,60px);
+		overflow: hidden;
+		position: relative;
+		.presents__slide{
+			width:100%;
+			height:100%;
+			position: absolute;
+			top:100px;
+			opacity:0;
+			visibility: hidden;
+			transition: all .3s;
+			&.active{
+			top:0;
+			opacity:1;
+			visibility: visible;
+			transition: all .3s;
+			}
+			.slide_item{
+				width:20%;
+				display: flex;
+				float:left;
+				height:50%;
+				align-items:center;
+				padding-left: 2%;
+				img{
+					object-fit: contain;
+					 filter: grayscale(100%) invert(50%);
+					 transition: all .3s;
+				}
+				&:hover{
+					img{
+					 filter: grayscale(0) invert(0%);
+					 transform: scale(1.1);
+					 transition: all .3s;
+				}
+				}
+			}
+		}
+	}
+	.presents__next{
+		display: inline-block;
+		height:100%;
+		float:left;
+		position: relative;
+		@include x-rem(width,50px);
+		button{
+			position: absolute;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+			margin: auto;
+			@include x-rem(width,35px);
+			@include x-rem(height,35px);
+			.icon{
+	   		fill: #fff;
+			 -webkit-transition: fill .3s ease;
+			 transition: fill .3s ease;
+			}
+			&:hover{
+			 	.icon{
+			 		fill: $red;
+			 -webkit-transition: fill .3s ease;
+			 transition: fill .3s ease;
+			 cursor: pointer;
+			 	}
+			 }
+		}
 	}
 }
