@@ -3037,3 +3037,43 @@ body {
 		}
 	}
 }
+//desighners
+.project__grid-designers{
+	.projects-col{
+		width: 25%!important;
+		&:not(:nth-child(-n+2)) {
+					@include x-rem(margin, 88px 0 0);
+				}
+		&:not(:nth-child(-n+3)) {
+				margin: 0!important;
+			}
+		.project__item{
+			@include x-rem(padding,0 28px);
+			.counter {
+				position: absolute;
+				font-family: $PragmaticaCondensedBlack;
+				@include x-rem(font-size,  72px);
+				color: $white;
+				opacity: 0.1;
+				@include x-rem(top, -82px);
+				@include x-rem(left, -5px);
+				z-index: 6;
+				@include x-rem(letter-spacing, 6.9px);
+				user-select: none;
+				pointer-events: none;
+			}
+			.project__media{
+				@include x-rem(height,320px);
+				img{
+					margin-top: -18%;
+				}
+			}
+			.project__name{
+				position: static;
+				line-height:2;
+				transform: translate(0,0);
+				@include x-rem(margin-top,22px);
+			}
+		}
+	}
+}
