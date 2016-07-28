@@ -565,6 +565,34 @@ if ($('.presents__wrapper').length) {
 	}
 
 function partnerSlide(slide){
+
+var slider = $('.presents__wrapper ');
+var next = $('.presents__next button');
+var elem = $('.presents__slide');
+var count = slider.children().length;
+
+	next.on("click", function(e) {
+
+		var last = elem.children().last();
+		var first = elem.children().first();
+		var nev = first.clone();
+		var $this = $(this);
+
+
+		elem.animate({opacity: 0},500,function(){ 
+
+			$(this).delay(500).prepend(last) })
+                         .animate({opacity: 1},1000);
+
+        $this.prop('disabled', true);
+        setTimeout(function(){
+        $this.prop('disabled', false);
+    }, 2000);
+
+	});
+};
+
+/*function partnerSlide(slide){
 var slider = $('.presents__wrapper ');
 var next = $('.presents__next button');
 var count = slider.children().length;
@@ -575,16 +603,57 @@ var count = slider.children().length;
 
     var selectedItem = slider.find('.active');
 
-   	next.addClass('animate')
     selectedItem.removeClass('active');
     selectedItem.next().addClass('active');
-    next.removeClass('animate')
 
     if (selectedItem.is(slider.children().last()) ) {
     	slider.children().first().addClass('active');
     }
 });
 };
+*/
+if ($('.service__wrapper').length) {
+		serviceSlide($('.service__wrapper'));
+	}
+
+function serviceSlide(item){
+
+var slider = $('.service__wrapper ');
+var that = $('.item__wrapper')
+
+setTimeout(function(){
+	that.on('mouseenter', function(){
+		let clsr ='item__right';
+		let clsl ='item__left';
+		let clsc ='item__center';
+		let left = slider.find('.item__left');
+		let right = slider.find('.item__right');
+		let center = slider.find('.item__center');
+		let $this = $(this);
+
+	
+		if ($this.hasClass(clsl)&& item.not(':animated')) {
+				setTimeout(function(){
+				left.removeClass(clsl).removeClass(clsr).addClass(clsc);
+				center.removeClass(clsc).removeClass(clsl).addClass(clsr);
+				right.removeClass(clsr).removeClass(clsc).addClass(clsl);
+								}, 1000);
+		}
+		else if ($this.hasClass(clsr)&& item.not(':animated')) {
+			setTimeout(function(){
+			right.removeClass(clsr).removeClass(clsl).addClass(clsc);
+			left.removeClass(clsl).removeClass(clsc).addClass(clsr);
+			center.removeClass(clsc).removeClass(clsr).addClass(clsl);
+			}, 1000);
+		}
+		else if ($this.hasClass(clsc) ){
+			return false;
+		}
+		
+	})
+	},1000);
+};
+
 
 });
  

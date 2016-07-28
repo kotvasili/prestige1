@@ -2442,6 +2442,10 @@ body {
 	width: 100%;
 	min-height:100px;
 	z-index: 2;
+	&.service-inner{
+		@include x-rem(margin-top,200px);
+		@include x-rem(margin-bottom,200px);
+	}
 	.presents__head{
 		font-family: $PragmaticaBold;
 			@include x-rem(font-size, 36px);
@@ -2449,6 +2453,8 @@ body {
 			width: 100%;
 			@include x-rem(padding-left, 261px);
 			@include x-rem(margin-bottom, 55px);
+			position: relative;
+			z-index: 2;
 			&.presents-partners{
 				@include x-rem(padding-left,320px);
 				@include x-rem(margin-top, 50px);
@@ -2465,6 +2471,8 @@ body {
 		.product_selector-item {
 			width: 31.9%;
 			float: left;
+			position: relative;
+			z-index: 2;
 			@include x-rem(padding-left, 37px);
 			@include r(1280) {
 				&:first-child {
@@ -2487,10 +2495,19 @@ body {
 				@include x-rem(padding-top, 55px);
 			}
 			}
+			ul{
+				list-style-type: square;
+				color: $white;
+				@include x-rem(font-size, 16px);
+				li:not(:first-child){
+					@include x-rem(margin-top, 30px);
+				}
+	
+			}
 		}
 		.photo_left{
 			top:-5%;
-			right:-15%;
+			right:-5%;
 			position: absolute;
 		}
 		.photo_center{
@@ -2781,9 +2798,56 @@ body {
 	.big-text{
 		float: right!important;
 	}
+	.letters{
+		.letters_item{
+			bottom: 0;
+			&.letters-a{
+				left: 25%;
+			}
+			&.letters-c{
+				right: 30.2%;
+			}
+	}
+}
 }
 .task-presents{
-	@include x-rem(padding-right, 70px);
+	.letters{
+		.letters_item{
+			&.letters-a{
+				left:33%;
+				top:20%;
+				}
+			&.letters-c{
+				top:45%;
+				left:50%;
+			}
+			&.letters-y{
+				right: 20.2%;
+				top:15%;
+			}
+			&.letters-m{
+				left:10%;
+				bottom: -30%;
+			}
+			&.letters-r{
+				left: 30%;
+				bottom: -15%;
+			}
+			&.letters-k{
+				right: 5%;
+				bottom:-15%;
+			}
+			&.letters-1{
+				top:5%;
+				left:20%;
+			}
+			&.letters-7{
+				top:5%;
+				right:40%;
+			}
+
+	}
+}
 }
 .presents__block{
 	color:$white;
@@ -2792,6 +2856,8 @@ body {
 	min-height:1px;
 	line-height: 1.875;
 	float: left;
+	position: relative;
+	z-index: 2;
 	&.block-text{
 		@include x-rem(max-width,362px);	}
 	&.block-img{
@@ -2832,14 +2898,10 @@ body {
 			height:100%;
 			position: absolute;
 			top:100px;
-			opacity:0;
-			visibility: hidden;
-			transition: all .3s;
+
 			&.active{
 			top:0;
-			opacity:1;
-			visibility: visible;
-			transition: all .3s;
+
 			}
 			.slide_item{
 				width:20%;
@@ -2891,6 +2953,87 @@ body {
 			 cursor: pointer;
 			 	}
 			 }
+		}
+	}
+}
+//services
+.services-inner{
+	.lead{
+		top:auto;
+		bottom:13%;
+	}
+}
+.service__wrapper{
+	width:100%;
+	@include x-rem(height,575px);
+	position: relative;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+	.item__wrapper{
+		position: absolute;
+		top:0;
+		left:30%;
+		display: inline-block;
+		@include x-rem(width,432px);
+		overflow: hidden;
+		height:100%;
+		transition:all.5s;
+	.service__item{
+		position: relative;
+				p{
+			position: absolute;
+			top:40%;
+			width:100%;
+			@include x-rem(font-size,36px);
+			font-family: $PragmaticaBold;
+			color: $white;
+			line-height: 1.389;
+			text-align: center;
+		}
+		.service__link{
+			position: absolute;
+			bottom: 20%;
+			width: 100%;
+			text-align: center;
+			.link_case{
+				display: inline-block;
+			}
+		}
+	}
+		&.item__center{
+		opacity: 1;
+    transform: translateX(0px) translateZ(0px) rotateY(0deg);
+	}
+	&.item__left{
+		opacity: .2;
+        transform: translateX(-350px) translateZ(-200px) rotateY(40deg);
+	}
+	&.item__right{
+		opacity: .2;
+    transform: translateX(350px) translateZ(-200px) rotateY(-40deg);
+	}
+}
+}
+.service__inner-container{
+	.letters{
+		.letters_item{
+			&.letters-r{
+				left:33%;
+				top:40%;
+				}
+			&.letters-i{
+				top:80%;
+				left:47.5%;
+			}
+			&.letters-g{
+				left:auto;
+				right: 20.2%;
+				bottom:-35%;
+			}
+			&.letters-t{
+				left:10%;
+				bottom:-50%;
+			}
 		}
 	}
 }
