@@ -21,6 +21,7 @@
     "rimraf": "*"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0"
   }
 }

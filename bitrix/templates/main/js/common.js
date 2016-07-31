@@ -647,6 +647,7 @@ var $sum = $('.number__sum span');
 };
 
 
+if($('.item__description').length){
 
 $('.project__gallery').slick({
   slidesToShow: 1,
@@ -659,20 +660,64 @@ $('.project__gallery').slick({
   appendArrows: $('.galery__nav'),
   nextArrow:'<button type="button" class="carousel-next"><div class="icon"><svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg"><path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path><path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path></svg></div></button>',
   prevArrow:'<button type="button" class="carousel-prev"><div class="icon"><svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg"><path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path><path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path></svg></div></button>',
- 	onInit: function(e){
-    $el.append('<div class="slick-counter">'+ parseInt(e.currentSlide + 1, 10) +' / '+ e.slideCount +'</div>');
-  },
-  onAfterChange: function(e){
-    $el.find('.slick-counter').html(e.currentSlide + 1 +' / '+e.slideCount);
-  }
+
+
 });
-$('.galery__description').slick({
+}
+if($('.item__description').length){
+	$('.galery__description').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   asNavFor: '.project__gallery',
   arrows:false,
   dots: false,
 });
+}
+else{
+
+	$('.galery__description').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  asNavFor: '.project__gallery',
+  arrows:false,
+  dots: false,
+  fade: true,
+});
+
+}
+function Popup(){
+
+	 $('a.project__item').on('click',function(e) {
+	 	var id = $(this).attr('href'),
+	 			close= $(id).find('.close');
+
+
+	 			$(id).find('.project__gallery').slick({
+				  slidesToShow: 1,
+				  slidesToScroll: 1,
+				  arrows: true,
+				  fade: true,
+				  asNavFor: '.galery__description',
+				  dotsClass: 'project__galery-nav',
+				  dots:true,
+				  appendArrows: $(id).find('.galery__nav'),
+				  nextArrow:'<button type="button" class="carousel-next"><div class="icon"><svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg"><path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path><path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path></svg></div></button>',
+				 	draggable:false
+
+				});
+	 			e.preventDefault();
+					$(id).addClass('opened');
+				close.click(function(){
+					$(id).removeClass('opened');
+					$(id).find('.project__gallery').slick('unslick');
+				});
+
+				});
+
+
+	};
+Popup()
+
 
 if ($('.presents__wrapper').length) {
 		partnerSlide($('.presents__wrapper'));
@@ -751,14 +796,14 @@ setTimeout(function(){
 				left.removeClass(clsl).removeClass(clsr).addClass(clsc);
 				center.removeClass(clsc).removeClass(clsl).addClass(clsr);
 				right.removeClass(clsr).removeClass(clsc).addClass(clsl);
-								}, 1000);
+								}, 2000);
 		}
 		else if ($this.hasClass(clsr)&& item.not(':animated')) {
 			setTimeout(function(){
 			right.removeClass(clsr).removeClass(clsl).addClass(clsc);
 			left.removeClass(clsl).removeClass(clsc).addClass(clsr);
 			center.removeClass(clsc).removeClass(clsr).addClass(clsl);
-			}, 1000);
+			}, 2000);
 		}
 		else if ($this.hasClass(clsc) ){
 			return false;
@@ -767,6 +812,5 @@ setTimeout(function(){
 	})
 	},1000);
 };
-
 
 });

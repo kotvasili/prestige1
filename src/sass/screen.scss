@@ -789,6 +789,8 @@ body {
 		text-align: right;
 		// margin-top: 101px;
 		@include x-rem(margin-top, 101px);
+		position: relative;
+		z-index: 5;
 	}
 	.letters {
 		.letters_item {
@@ -1574,6 +1576,7 @@ body {
 		display: inline-block;
 		margin-left: 10.5%;
 		position: relative;
+		z-index: 5;
 		// top: -55px;
 		@include x-rem(top, -55px);
 	}
@@ -1775,7 +1778,7 @@ body {
 		position: absolute;
 		right: -8.5%;
 		top: 52%;
-		display: block;
+		display: block !important;
 		// width: 40px;
 		// height: 40px;
 		@include x-rem(width, 40px);
@@ -1962,7 +1965,7 @@ body {
 	  font-weight: bold;
 	  line-height: 1.333;
 		@include x-rem(letter-spacing, 1.5px);
-		@include x-rem(padding-left, 280px);
+		@include x-rem(padding-left,380px);
 	}
 	.filter {
 		text-align: center;
@@ -2058,7 +2061,7 @@ body {
 				}
 				&.designer-media{
 					img{
-						margin-top:40%;
+						top:0 !important;
 					}
 				}
 			}
@@ -2079,7 +2082,7 @@ body {
 						@include x-rem(padding, 4px 0);
 						@include x-rem(letter-spacing, 3px);
 						position: relative;
-						display: block;
+						display: inline-block;
 						transition: color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 						transform: translate3d(0,0,0);
 						&::after {
@@ -2369,6 +2372,9 @@ body {
 		transform: translate(-50%, -50%);
 		display: inline-block;
 		width: 100%;
+		&.designer__lead{
+			top: 44%
+		}
 	}
 	.head__projects-name {
 		font-family: $PragmaticaBold;
@@ -2485,16 +2491,16 @@ body {
 			position: relative;
 			z-index: 2;
 			&.presents-partners{
-				@include x-rem(padding-left,320px);
+				@include x-rem(padding-left,380px);
 				@include x-rem(margin-top, 50px);
 			}
 	}
 	.product_selector{
 		margin-left: 0;
-		@include x-rem(max-width, 1150px);
+		@include x-rem(max-width, 1200px);
 		position: relative;
 		@include x-rem(padding-left, 21px);
-		@include r(1280) {
+		@include r(1290) {
 			padding-left: 0;
 		}
 		.product_selector-item {
@@ -2509,7 +2515,9 @@ body {
 					@include x-rem(padding-left, 18px);
 				}
 			}
-			.text {
+			&>.text {
+				padding-top:0!important;
+				@include x-rem(padding-bottom, 50px);
 				p {
 					@include x-rem(letter-spacing, 0.8px);
 				}
@@ -2518,11 +2526,8 @@ body {
 				text-transform: uppercase;
 				p{
 				@include x-rem(letter-spacing, 4px);
-			}
-			}
-			&:not(:first-child){
-				@include x-rem(padding-top, 55px);
-			}
+					}
+				}
 			}
 			ul{
 				list-style-type: square;
@@ -2626,7 +2631,7 @@ body {
 	.slick-active{
 		border-bottom: 3px solid;
 		border-bottom-color:$red;
-		@include x-rem(height, 31px);
+		@include x-rem(height, 29.5px);
 	}
 
 }
@@ -2796,6 +2801,7 @@ body {
 			@include x-rem(height, 510px);
 			position: absolute;
 			top:-5%;
+			left:8%;
 			overflow: hidden;
 		}
 	.task__kredo{
@@ -2805,7 +2811,7 @@ body {
 		.task__kredo-text{
 			position: absolute;
 			top:25%;
-			left:30%;
+			left:36%;
 			font-weight:600;
 			font-family: $PragmaticaBold;
 			color: $white;
@@ -2822,7 +2828,7 @@ body {
 	@include x-rem(margin-top,55px);
 }
 .product-about{
-	.product_selector-item:not(:first-child){
+	.text:not(:first-child){
 		padding-left: 0;
 	}
 	.big-text{
@@ -2940,6 +2946,7 @@ body {
 				height:50%;
 				align-items:center;
 				padding-left: 2%;
+				justify-content: center;
 				img{
 					object-fit: contain;
 					 filter: grayscale(100%) invert(50%);
@@ -2960,6 +2967,7 @@ body {
 		height:100%;
 		float:left;
 		position: relative;
+		@include x-rem(margin-left,50px);
 		@include x-rem(width,50px);
 		button{
 			position: absolute;
@@ -3002,8 +3010,11 @@ body {
 	.item__wrapper{
 		position: absolute;
 		top:0;
-		left:30%;
-		display: inline-block;
+		left:0;
+		right: 0;
+		bottom:0;
+		margin:auto;
+		display: block;
 		@include x-rem(width,432px);
 		overflow: hidden;
 		height:100%;
@@ -3113,7 +3124,7 @@ body {
 	.designer__img{
 		@include x-rem(width,420px);
 		@include x-rem(height,580px);
-		@include x-rem(margin-left,108px);
+		@include x-rem(margin-left,158px);
 		display: inline-block;
 		float: left;
 		img{
@@ -3129,7 +3140,7 @@ body {
 		@include x-rem(letter-spacing,4px);
 		display: inline-block;
 		position: absolute;
-		@include x-rem(left, 700px);
+		@include x-rem(right, 250px);
 		top:25%;
 		@include x-rem(width,530px);
 		.presents-article{
@@ -3142,7 +3153,7 @@ body {
 }
 .designer__inner-container{
 	.letters{
-		@include x-rem(letter-spacing,20px);
+		@include x-rem(letter-spacing,40px);
 		.letters_item{
 			&.letters-a{
 				left:23%;
@@ -3160,4 +3171,189 @@ body {
 
 		}
 	}
+}
+.popup__wrapper{
+	top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+	position: fixed;
+	text-align:center;
+	z-index: 65;
+	background-color:rgba(0,0,0,0.7);
+		opacity:0;
+		visibility:hidden;
+		transition: all .5s ease;
+	&.opened{
+		opacity:1;
+		visibility:visible;
+		transition: all .5s ease;
+		.popup__container{
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+		transition: all .8s;
+		transition-delay:.5s;
+		}
+	}
+	&:before {
+  content: " ";
+  display: inline-block;
+  height: 100%;
+  width: 1%;
+  vertical-align: middle;
+		}
+	.popup__container{
+	@include x-rem(max-width,1520px);
+	@include x-rem(min-width,1220px);
+	position: relative;
+	display: inline-block;
+	vertical-align:middle;
+	@include x-rem(height,1000px);
+	transform: translate3d(0, -5%, 0);
+	opacity:0;
+	transition: transform .3s;
+	.popup__nav{
+		@include x-rem(padding,0 90px);
+		@include x-rem(height,60px);
+		text-align: center;
+		@include x-rem(margin, 0 0 20px);
+		.close {
+		position: absolute;
+		// top: 44px;
+		@include x-rem(top, 14px);
+		left: 48.3%;
+		z-index: 3;
+		text-align: center;
+		cursor: pointer;
+		.menu {
+			// width: 33px;
+			// height: 33px;
+			@include x-rem(width, 33px);
+			@include x-rem(height, 33px);
+			display: inline-block;
+			position: relative;
+			// margin-bottom: 11px;
+			@include x-rem(margin-bottom, 11px);
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				height: 1px;
+				width: 100%;
+				background-color: rgba(255,255,255,0.5);
+				margin-top: -1px;
+				transform: rotate(45deg);
+				transition: all 0.5s ease;
+			}
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				height: 1px;
+				width: 100%;
+				background-color: rgba(255,255,255,0.5);
+				margin-top: -1px;
+				transform: rotate(-45deg);
+				transition: all 0.5s ease;
+			}
+		}
+		&:hover {
+			.menu {
+				&::after, &::before {
+					background-color: $white;
+					transform: rotate(0);
+						}
+					}
+				}
+			}
+		}
+	.wrapper__galery{
+		padding:0;
+		overflow: visible;
+		.galery__nav{
+			.slick-prev{
+				display: none !important;
+			}
+			.carousel-next{
+				.icon{
+					top:255px;
+				}
+			}
+		}
+		.project__gallery{
+			margin:0;
+			.slick-list{
+			overflow: visible;
+			}
+			.item_photo{
+				overflow: visible;
+			}
+			 .item__title{
+			 	display: inline-block;
+			 	position: absolute;
+			 	color: $red;
+			 	top: 35%;
+			 	left:-6%;
+			  @include x-rem(font-size, 72px);
+			  @include x-rem(letter-spacing, 4px);
+			  text-transform: uppercase;
+			  line-height: 1.389;
+				text-align:left;
+				font-weight:bold;
+				font-family: $PragmaticaBlack;
+				z-index: 1000;
+			 }
+		}
+		.galery__description-wrapper{
+			right:0;
+				.galery__description{
+					transform: rotate(0);
+					width:100%;
+					@include x-rem(height, 400px);
+					display: inline-block;
+					left:0;
+					bottom: -5%;
+					.item__format{
+						.link_case{
+							@include x-rem(height, 60px);
+							text-align: left;
+							cursor: pointer;
+							transform:translate3d(0,40%,0);
+							opacity:0;
+							}
+							&.slick-current{
+								.link_case{
+									transform:translate3d(0,0,0);
+									opacity:1;
+									transition: all .4s;
+									&:first-child{
+										transition-delay: .15s;
+												}
+									&:nth-child(2){
+										transition-delay: .29s;
+												}
+									&:nth-child(3){
+										transition-delay: .4s;
+												}
+								}
+						&>.link_case {
+							@include x-rem(margin-top, 20px);
+						}
+						}
+					}
+				}
+			}
+		.number{
+			right:3%;
+			z-index: 1000;
+		}
+		.number__sum{
+			right:1%;
+			z-index: 1000;
+		}
+		}
+	}
+
 }
