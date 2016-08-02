@@ -2497,7 +2497,7 @@ body {
 	}
 	.product_selector{
 		margin-left: 0;
-		@include x-rem(max-width, 1200px);
+		@include x-rem(max-width, 1150px);
 		position: relative;
 		@include x-rem(padding-left, 21px);
 		@include r(1290) {
@@ -2544,6 +2544,10 @@ body {
 			top:-5%;
 			right:-5%;
 			position: absolute;
+			@include r(1024){
+				max-width:25rem!important;
+				 right: 0;
+				}
 		}
 		.photo_center{
 			display: block !important;
@@ -2557,6 +2561,7 @@ body {
 				@include x-rem(max-width, 510px);
 				max-height: 700px;
 				overflow:hidden; 
+
 				img{
 					@include x-rem(max-height, 626px);
 				}
@@ -2586,6 +2591,9 @@ body {
 	@include x-rem(max-width, 1080px);
 	z-index:2;
 	float:left;
+	@include r(1024){
+		@include x-rem(max-width, 920px);
+	}
 .project__galery-item{
 	width:100%;
 	position: relative;
@@ -2611,6 +2619,9 @@ body {
 	float: left;
 	height:42px;
 	text-align: right;
+		@include r(1024){
+		@include x-rem(max-width, 920px);
+	}
 	li{
 	cursor: pointer;
 	display: inline-block;
@@ -2817,9 +2828,15 @@ body {
 			color: $white;
 			line-height: 1.389;
 			text-transform: uppercase;
-			@include x-rem(font-size, 72px);
+			@include x-rem(font-size, 70px);
 			letter-spacing: 4px;
-
+			@include r(1280){
+				left:30%;
+			}
+			@include r(1024){
+				left:22%;
+				@include x-rem(font-size, 60px);
+			}
 		}
 	}
 }
@@ -3082,6 +3099,9 @@ body {
 .project__grid-designers{
 	.projects-col{
 		width: 25%!important;
+		@include r(1024){
+		width: 50%!important;
+		}
 		&:not(:nth-child(-n+2)) {
 					@include x-rem(margin, 88px 0 0);
 				}
@@ -3127,6 +3147,9 @@ body {
 		@include x-rem(margin-left,158px);
 		display: inline-block;
 		float: left;
+		@include r(1024){
+			@include x-rem(margin-left,108px);
+		}
 		img{
 			width:100%;
 		}
@@ -3143,6 +3166,12 @@ body {
 		@include x-rem(right, 250px);
 		top:25%;
 		@include x-rem(width,530px);
+		@include r(1024){
+			@include x-rem(right, 51px);
+		}
+		@include r(1280){
+			@include x-rem(right, 141px);
+		}
 		.presents-article{
 			@include x-rem(font-size,12px);
 			font-family:$PragmaticaBook;
@@ -3273,22 +3302,34 @@ body {
 		padding:0;
 		overflow: visible;
 		.galery__nav{
+			@include x-rem(width, 133px);
+			@include x-rem(height, 133px);
+			top:10%;
+			left:65%;
 			.slick-prev{
 				display: none !important;
 			}
 			.carousel-next{
+				width:100%;
 				.icon{
-					top:255px;
+					left:0;
+					bottom:0;
 				}
 			}
 		}
 		.project__gallery{
 			margin:0;
+			@include r(1024){
+				margin-left: 10%;
+			}
 			.slick-list{
 			overflow: visible;
 			}
 			.item_photo{
 				overflow: visible;
+				img{
+					width:100%;
+				}
 			}
 			 .item__title{
 			 	display: inline-block;
@@ -3355,5 +3396,184 @@ body {
 		}
 		}
 	}
+}
 
+//contacts
+.section_contact{
+	position: relative;
+	z-index: 5;
+	.head-about{
+		position: relative;
+		z-index: 1;
+		transition:all .6s ease;
+		transition-delay: .4s; 
+		background-color: rgba(0,0,0,0.6)
+	}
+	.lead{
+		transition: all .5s cubic-bezier(0.19, 1, 0.22, 1);
+	}
+	.section__map{
+		position: absolute;
+		width:100%;
+		top:0;
+		z-index: 0;
+		#map_canvas{
+		background: #000;
+		@include x-rem(height, 425px);
+		}
+	}
+	.link_case{
+		position: absolute;
+		z-index: 5;
+		@include x-rem(bottom, 27px);
+		@include x-rem(right, 130px);
+		&:hover{
+			button{
+		cursor: pointer;
+	}
+	}
+	}
+	.hidden{
+		opacity: 0;
+		visibility:hidden;
+	}
+	.lead-l{
+		transform: translate(-50%,20%);
+		opacity: 0;
+		visibility:hidden;
+	}
+}
+.c-contact-wrapper{
+	@include x-rem(width, 972px);
+	display:block;
+	@include x-rem(margin, 112px auto 192px);
+	@include clearfix
+	.contact__block{
+		@include clearfix
+		display: inline-block;
+		float:left;
+		width:50%;
+		@include x-rem(min-height, 260px);
+		.block-address{
+			margin:0;
+			float:left;
+			width:100%;
+		}
+		.contact__block-slogan{
+			font-family: $PragmaticaBold;
+			@include x-rem(font-size, 36px);
+			color: $white;
+			width: 100%;
+		}
+		.contact__block-form{
+			width:100%;
+			@include x-rem(padding, 30px 60px 30px 90px);
+			position: relative;
+			form{
+				width:100%;
+				textarea{
+					position: relative;
+					z-index: 1;
+					width:100%;
+					background: transparent;
+					resize: vertical;
+					min-height: 6.375rem;
+					height:auto!important;
+					border-top-color:transparent;
+					border-left-color:transparent;
+					border-right-color:transparent;
+					line-height:2;
+					word-wrap: break-word;
+
+				}
+				label{
+					position: absolute;
+					font-family: $PragmaticaCondensedBlack;
+					@include x-rem(font-size, 90px);
+					color: $letters;
+					z-index: 0;
+					transition:color .3s;
+					@include x-rem(left, -10px);
+					text-transform: uppercase;
+					&.label__name{
+						@include x-rem(top, -10px);
+					}
+					&.label__mail{
+						@include x-rem(top, 100px);
+					}
+					&.label__msg{
+						@include x-rem(top, 210px);
+					}
+				}
+				.form__input{
+					color:$white;
+					width:100%;
+					@include x-rem(height, 40px);
+					border-bottom:2px solid $white;
+					position: relative;
+					z-index: 1;
+					font-family:$PragmaticaBook;
+					line-height:2.1;
+					@include x-rem(font-size, 14px);
+					text-transform: uppercase;
+					@include x-rem(letter-spacing, 2px);
+					&:focus+ label{
+							color:$grey;
+							transition:color .3s;
+						}
+					&:required:valid{
+						border-bottom:2px solid $red;
+					}
+
+					&:not(:first-child){
+						@include x-rem(margin-top, 76px);
+					}
+				}
+				.form__button{
+					@include x-rem(margin-top, 50px);
+					@include x-rem(width, 150px);
+					@include x-rem(font-size, 16px);
+					color: $white;
+					font-family: $PragmaticaBlack;
+					text-transform: uppercase;
+					@include x-rem(letter-spacing, 4px);
+					float: right;
+					position: relative;
+					line-height:2;
+					@include x-rem(padding-right, 40px);
+					transition:color .3s;
+					.icon{
+						position: absolute;
+						right: 0;
+						top:10%;
+						width:40px;
+						height:20px;
+						.fill{
+							fill:$white;
+							transition:fill .3s;
+						}
+						.stroke{
+							stroke:$white;
+							transition:stroke .3s;
+								}
+						}	
+						&:hover{
+							color:$red;
+							transition:color .3s;
+							cursor: pointer;
+						.icon{
+							.fill{
+								fill:$red;
+								transition:fill .3s;
+							}
+							.stroke{
+								stroke:$red;
+								transition:stroke .3s;
+							}
+						}
+					}
+				}	
+			}
+		}
+	}
 }

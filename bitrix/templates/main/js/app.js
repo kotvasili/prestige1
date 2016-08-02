@@ -698,5 +698,80 @@ setTimeout(function(){
 	})
 	},1000);
 };
+var map; 
+var infoWindow = new google.maps.InfoWindow();
+
+function initialize(){
+    initAgentMap(53.903620,27.561963)
+    var marker = plotAgent(53.903620, 27.561963);
+    marker.setMap(map); }
+
+function initAgentMap(lat, lng) {
+    lat = isNaN(lat) || lat === null ? 53.903620: lat;
+    lng = isNaN(lng) || lat === null ? 27.561963 : lng;
+    map = new google.maps.Map(document.getElementById("map_canvas"), {  
+        center : new google.maps.LatLng(lat, lng),
+        zoom: 15,
+        streetViewControl: false,
+        panControl: false,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        zoomControlOptions : {
+            style : google.maps.ZoomControlStyle.SMALL
+        },
+        styles:[{
+                "stylers": [
+                  { "hue": "#0019ff" },
+						      { "saturation": -100 },
+						      { "invert_lightness": true },
+						      { "lightness": 17 },
+						      { "weight": 3.6 }
+													]
+							}]
+    });
+}
+
+function plotAgent(lat, long, text, id) {
+    var point = new google.maps.LatLng(lat, long);
+     var image = {
+		    url: 'img/marker.png',
+		    size: new google.maps.Size(38, 38),
+		  };
+    var marker = new google.maps.Marker({
+        position : point,
+         url: 'img/marker.png', 
+         icon: image      
+    });
+    return marker;
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+if ($('#map_canvas').length) {
+		let btn =$('.map-trigger'),
+				parent = $('.section_contact'),
+				cover = parent.find('.head-about'),
+				title = parent.find('.lead');
+
+jQuery.fn.toggleText = function() {
+    	var altText = this.data("alt-text");
+
+    	if (altText) {
+    		this.data("alt-text", this.text());
+    		this.text(altText);
+    		console.log(altText)
+    	}
+    };
+
+		btn.click(function(){
+			cover.toggleClass('hidden');
+			$(this).toggleText();
+			title.toggleClass('lead-l');
+		})
+	}
 
 });
