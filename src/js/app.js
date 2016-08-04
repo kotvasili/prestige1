@@ -559,18 +559,7 @@ if($('.item__description').length){
   dots: false,
 });
 }
-else{
 
-	$('.galery__description').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  asNavFor: '.project__gallery',
-  arrows:false,
-  dots: false,
-  fade: true,
-});
-
-}
 function Popup(){
 
 	 $('a.project__item').on('click',function(e) {
@@ -583,7 +572,7 @@ function Popup(){
 				  slidesToScroll: 1,
 				  arrows: true,
 				  fade: true,
-				  asNavFor: '.galery__description',
+				  asNavFor: $(id).find('.galery__description'),
 				  dotsClass: 'project__galery-nav',
 				  dots:true,
 				  appendArrows: $(id).find('.galery__nav'),
@@ -591,7 +580,17 @@ function Popup(){
 				 	draggable:false
 
 				});
-	 			e.preventDefault();
+				$(id).find('.galery__description').slick({
+					  slidesToShow: 1,
+					  slidesToScroll: 1,
+					  asNavFor: $(id).find('.project__gallery'),
+					  arrows:false,
+					  dots: false,
+					  fade: true,
+					});
+
+
+
 					$(id).addClass('opened');
 				close.click(function(){
 					$(id).removeClass('opened');
@@ -665,39 +664,58 @@ function serviceSlide(item){
 
 var slider = $('.service__wrapper ');
 var that = $('.item__wrapper')
+var timeout;
+	that.each(function(){
+		var _ = $(this);
+		_.on('mouseenter', function(){
+		 function delay(){
+				slider.addClass('nohover');
+						setTimeout(function(){
+						slider.removeClass('nohover');
+										}, 1500);
+					};
+			timeout = setTimeout(function(){
 
-setTimeout(function(){
-	that.on('mouseenter', function(){
-		let clsr ='item__right';
-		let clsl ='item__left';
-		let clsc ='item__center';
-		let left = slider.find('.item__left');
-		let right = slider.find('.item__right');
-		let center = slider.find('.item__center');
-		let $this = $(this);
+				let clsr ='item__right';
+				let clsl ='item__left';
+				let clsc ='item__center';
+				let left = slider.find('.item__left');
+				let right = slider.find('.item__right');
+				let center = slider.find('.item__center');
+				let $this = _;
 
-	
-		if ($this.hasClass(clsl)&& item.not(':animated')) {
-				setTimeout(function(){
-				left.removeClass(clsl).removeClass(clsr).addClass(clsc);
-				center.removeClass(clsc).removeClass(clsl).addClass(clsr);
-				right.removeClass(clsr).removeClass(clsc).addClass(clsl);
-								}, 2000);
-		}
-		else if ($this.hasClass(clsr)&& item.not(':animated')) {
-			setTimeout(function(){
-			right.removeClass(clsr).removeClass(clsl).addClass(clsc);
-			left.removeClass(clsl).removeClass(clsc).addClass(clsr);
-			center.removeClass(clsc).removeClass(clsr).addClass(clsl);
-			}, 2000);
-		}
-		else if ($this.hasClass(clsc) ){
-			return false;
-		}
+			
+				if ($this.hasClass(clsl)&& !slider.hasClass('nohover')) {
+						
+						left.removeClass(clsl).removeClass(clsr).addClass(clsc);
+						center.removeClass(clsc).removeClass(clsl).addClass(clsr);
+						right.removeClass(clsr).removeClass(clsc).addClass(clsl);
+						delay();
+
+				}
+				else if ($this.hasClass(clsr)&& !slider.hasClass('nohover')) {
+					right.removeClass(clsr).removeClass(clsl).addClass(clsc);
+					left.removeClass(clsl).removeClass(clsc).addClass(clsr);
+					center.removeClass(clsc).removeClass(clsr).addClass(clsl);
+					delay();
+				}
+				else if ($this.hasClass(clsc) ){
+					return false;
+				}
+					
+					},300)
+		})
 		
+		_.on('mouseleave',function(){
+			clearTimeout(timeout);
+			
+		})
 	})
-	},1000);
 };
+
+
+if ($('#map_canvas').length) {
+
 var map; 
 var infoWindow = new google.maps.InfoWindow();
 
@@ -751,7 +769,10 @@ function plotAgent(lat, long, text, id) {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
-if ($('#map_canvas').length) {
+
+
+
+
 		let btn =$('.map-trigger'),
 				parent = $('.section_contact'),
 				cover = parent.find('.head-about'),
@@ -773,6 +794,22 @@ jQuery.fn.toggleText = function() {
 			title.toggleClass('lead-l');
 		})
 	}
+//form validation and textarea
+if ($('.contact__block-form').length) {
+autosize($('textarea'));
 
+	$('textarea').focus(function(){
+		$('.label__msg').css('color','#787878')
+	})
+
+	$('textarea').focusout(function(){
+		$('.label__msg').css('color','#222')
+	})
+
+ $.validate({
+    lang: 'en'
+  });
+
+}
 });
  

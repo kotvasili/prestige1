@@ -103,21 +103,29 @@
 					</div>
 					<div class="contact__block">
 						<div class="contact__block-form">
-							<form action="" method="get" name="form-contact">
-								<input id="form_name" type="text" required class="form__input">
-								<label for="form_name" data-speed="5" class="parallax label__name">name</label>
-								<input id="form_mail" type="email" required class="form__input">
-								<label for="form_mail" data-speed="5" class="parallax label__mail">E-mail</label>
-								<textarea id="form_msg" type="textarea" required class="form__input"></textarea>
-								<label for="form_msg" data-speed="5" class="parallax label__msg">message</label>
-								<button type="submit" class="form__button">send
-									<div class="icon">
-										<svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg">
-											<path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path>
-											<path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path>
-										</svg>
+							<form action="/message" method="post" name="form-contact">
+								<div class="input__wrapper">
+									<input id="form_name" type="text" required="required" data-validation="length" data-validation-length="min2" class="form__input">
+									<label for="form_name" data-speed="5" class="parallax label__name">name</label>
+								</div>
+								<div class="input__wrapper">
+									<input id="form_mail" type="email" required="required" data-validation="email" class="form__input">
+									<label for="form_mail" data-speed="5" class="parallax label__mail">E-mail</label>
+								</div>
+								<div class="input__wrapper">
+									<div class="wrapper-textarea">
+										<textarea id="form_msg" type="textarea" rows="3" required="required" data-validation="length" data-validation-length="min10" class="form__input"></textarea>
 									</div>
-								</button>
+									<label for="form_msg" data-speed="5" class="parallax label__msg">message</label>
+									<button type="submit" class="form__button">send
+										<div class="icon">
+											<svg viewbox="0 0 41.2 19" xmlns="http://www.w3.org/2000/svg">
+												<path d="m0,8.9l25,0l0,2l-25,0l0,-2z" clip-rule="evenodd" fill-rule="evenodd" class="fill"></path>
+												<path d="m39.2,9.5l-13.5,7.8l0,-15.6l13.5,7.8z" stroke-miterlimit="10" stroke-width="2" fill="none" class="stroke"></path>
+											</svg>
+										</div>
+									</button>
+								</div>
 							</form>
 						</div>
 					</div>

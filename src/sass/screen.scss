@@ -1129,6 +1129,7 @@ body {
 	@include x-rem(padding, 142px 0);
 	position: relative;
 	text-align: center;
+	overflow:hidden;
 	.lead {
 		z-index: 10;
 		// max-width: 700px;
@@ -3475,16 +3476,18 @@ body {
 					position: relative;
 					z-index: 1;
 					width:100%;
+					resize:none;
 					background: transparent;
-					resize: vertical;
-					min-height: 6.375rem;
-					height:auto!important;
-					border-top-color:transparent;
-					border-left-color:transparent;
-					border-right-color:transparent;
+					border:none;
 					line-height:2;
 					word-wrap: break-word;
 
+				}
+				.form-error{
+					color:$grey;
+					line-height:2;
+					position: relative;
+					z-index: 2;
 				}
 				label{
 					position: absolute;
@@ -3502,7 +3505,7 @@ body {
 						@include x-rem(top, 100px);
 					}
 					&.label__msg{
-						@include x-rem(top, 210px);
+						@include x-rem(top,210px);
 					}
 				}
 				.form__input{
@@ -3521,12 +3524,9 @@ body {
 							color:$grey;
 							transition:color .3s;
 						}
-					&:required:valid{
-						border-bottom:2px solid $red;
-					}
-
-					&:not(:first-child){
-						@include x-rem(margin-top, 76px);
+					&.error{
+						color:$red;
+						border-bottom-color:$red !important;
 					}
 				}
 				.form__button{
@@ -3573,6 +3573,20 @@ body {
 						}
 					}
 				}	
+				.input__wrapper:not(:first-child){
+						@include x-rem(margin-top, 76px);
+					}
+				.wrapper-textarea{
+					position: relative;
+					z-index: 4;
+					background:linear-gradient(transparent 24px,$white 2px);
+				  background-size: 100% 25px;
+				  background-repeat:round;
+				  .form__input{
+				  	position: relative;
+				  	border-bottom:none;
+				  }
+				}
 			}
 		}
 	}
