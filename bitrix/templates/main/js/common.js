@@ -720,11 +720,12 @@ function Popup(){
 					});
 
 
-
+		
 					$(id).addClass('opened');
 				close.click(function(){
 					$(id).removeClass('opened');
 					$(id).find('.project__gallery').slick('unslick');
+					$(id).find('.galery__description').slick('unslick');
 				});
 
 				});

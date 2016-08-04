@@ -3343,9 +3343,20 @@ body {
 			  text-transform: uppercase;
 			  line-height: 1.389;
 				text-align:left;
+				transform: translate3d(0,4rem,0);
+				opacity:0;
 				font-weight:bold;
 				font-family: $PragmaticaBlack;
 				z-index: 1000;
+			 }
+			 .project__galery-item{
+			 	&.slick-current{
+			 		.item__title{
+			 			transform: translate3d(0,0,0);
+						opacity:1;
+						transition: all .5s ease;
+			 		}
+			 	}
 			 }
 		}
 		.galery__description-wrapper{
