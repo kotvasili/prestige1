@@ -1,3 +1,10 @@
+$(window).load(function() {
+
+	$(".loader__wrapper> svg").delay(400).fadeOut();
+	$(".loader__wrapper").delay(450).fadeOut("slow");
+
+});
+
 $(document).ready(function () {
 
 	if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
@@ -69,6 +76,13 @@ $(document).ready(function () {
 			nextButton: '.carousel__designer-next',
 			loop: true
 		});
+		$('.carousel__designer-next').click(function(){
+			$this = $(this)
+			$this.addClass('spin');
+        setTimeout(function(){
+        $this.removeClass('spin');
+    }, 1000);
+		})
 	}
 
 	//Parallax
@@ -393,7 +407,11 @@ $(document).ready(function () {
 			if($(this).hasClass('animate')) return false;
 
 			$(this).addClass('animate');
-
+			$this = $(this)
+			$this.addClass('spin');
+		        setTimeout(function(){
+		        $this.removeClass('spin');
+   						 }, 500);
 			var current = $('.carousel_layout').find('.active'),
 				prev = current.next(),
 				prevPrev = prev.next(),
@@ -627,12 +645,12 @@ var count = slider.children().length;
 		elem.animate({opacity: 0},500,function(){ 
 
 			$(this).delay(500).prepend(last) })
-                         .animate({opacity: 1},1000);
+                         .animate({opacity: 1},500);
 
-        $this.prop('disabled', true);
+        $this.addClass('spin').prop('disabled', true);
         setTimeout(function(){
-        $this.prop('disabled', false);
-    }, 2000);
+        $this.removeClass('spin').prop('disabled', false);
+    }, 1000);
 
 	});
 };
@@ -673,7 +691,7 @@ var timeout;
 				slider.addClass('nohover');
 						setTimeout(function(){
 						slider.removeClass('nohover');
-										}, 1500);
+										}, 700);
 					};
 			timeout = setTimeout(function(){
 

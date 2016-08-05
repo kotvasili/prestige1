@@ -1,6 +1,34 @@
 @import "../../bower_components/normalize.css/normalize.css";
 @import "lib/base";
-
+.loader__wrapper{
+	width:100vw;
+	height:100vh;
+	background:$darkGrey;
+	position: fixed;
+	top:0;
+	z-index:999;
+	$len: 242.776657104492px;
+	$time: 1.6s;
+#outline {
+  stroke-dasharray: $len*0.01, $len;
+  stroke-dashoffset: 0;
+  animation: anim $time linear infinite;
+}
+@keyframes anim {
+  12.5% {
+    stroke-dasharray: $len*0.14, $len;
+    stroke-dashoffset: -$len*0.11;
+  }
+  43.75% {
+    stroke-dasharray: $len*0.35, $len;
+    stroke-dashoffset: -$len*0.35;
+  }
+  100% {
+    stroke-dasharray: $len*0.01, $len;
+    stroke-dashoffset: -$len*0.99;
+  }
+}
+}
 html {
 	text-size-adjust: 100%;
 	font-size: 16px;
@@ -1254,16 +1282,25 @@ body {
 				// height: 40px;
 				@include x-rem(width, 40px);
 				@include x-rem(height, 40px);
+				&.spin{
+				transform:rotate(-180deg);
+				transition:transform .3s;
+						}
 				.icon {
 					display: block;
 					width: 100%;
 					height: 100%;
+					svg{
+						@include x-rem(width, 40px);
+						@include x-rem(height, 40px);
+					}
 					path {
 						fill: $white;
 						transition: fill 0.3s ease;
 					}
 				}
 				&:hover {
+					cursor: pointer;
 					.icon {
 						path {
 							fill: $red;
@@ -1801,16 +1838,25 @@ body {
 			@include x-rem(width, 40px);
 			@include x-rem(height, 40px);
 			display: block;
+			&.spin{
+				transform:rotate(-180deg);
+				transition:transform .3s;
+			}
 			.icon {
 				display: block;
 				width: 100%;
 				height: 100%;
+				svg{
+					@include x-rem(width, 40px);
+					@include x-rem(height, 40px);
+				}
 				path {
 					fill: $white;
 					transition: fill 0.3s ease;
 				}
 			}
 			&:hover {
+				cursor:pointer;
 				.icon {
 					path {
 						fill: $red;
@@ -2481,6 +2527,17 @@ body {
 	&.service-inner{
 		@include x-rem(margin-top,200px);
 		@include x-rem(margin-bottom,200px);
+		.photo_left{
+			position: absolute;
+			right: -6%;
+			@include r(1376){
+				right:0;
+			}
+			@include r(1280){
+				right:5%!important;
+			}
+
+		}
 	}
 	.presents__head{
 		font-family: $PragmaticaBold;
@@ -2543,11 +2600,19 @@ body {
 		}
 		.photo_left{
 			top:-5%;
-			right:-5%;
 			position: absolute;
 			@include r(1024){
 				max-width:25rem!important;
 				 right: 0;
+				 
+				}
+			@include r(1280){
+				 right: -5%;
+				 max-width:25rem!important;
+				}
+			@include r(1366){
+				 max-width:25rem!important;
+				 margin-left: 0;
 				}
 		}
 		.photo_center{
@@ -2980,6 +3045,10 @@ body {
 			}
 		}
 	}
+	.carousel_layout-next{
+			@include x-rem(width,40px);
+			@include x-rem(height,40px);
+	}
 	.presents__next{
 		display: inline-block;
 		height:100%;
@@ -2994,12 +3063,22 @@ body {
 			left:0;
 			right:0;
 			margin: auto;
-			@include x-rem(width,35px);
-			@include x-rem(height,35px);
+			@include x-rem(width,40px);
+			@include x-rem(height,40px);
+			&.spin{
+			transform:rotate(-180deg);
+			transition:transform .3s;
+					}
+			svg{
+				@include x-rem(width,40px);
+				@include x-rem(height,40px);
+			}
 			.icon{
 	   		fill: #fff;
 			 -webkit-transition: fill .3s ease;
 			 transition: fill .3s ease;
+			@include x-rem(width,40px);
+			@include x-rem(height,40px);
 			}
 			&:hover{
 			 	.icon{
@@ -3073,7 +3152,9 @@ body {
 	}
 }
 }
+//service inner
 .service__inner-container{
+
 	.letters{
 		.letters_item{
 			&.letters-r{
@@ -3100,14 +3181,14 @@ body {
 .project__grid-designers{
 	.projects-col{
 		width: 25%!important;
-		@include r(1024){
+		@include r(1150){
 		width: 50%!important;
 		}
 		&:not(:nth-child(-n+2)) {
-					@include x-rem(margin, 88px 0 0);
+		@include x-rem(margin, 88px 0 0);
 				}
 		&:not(:nth-child(-n+3)) {
-				margin: 0!important;
+			margin: 0!important;
 			}
 		.project__item{
 			@include x-rem(padding,0 28px);
@@ -3172,6 +3253,9 @@ body {
 		}
 		@include r(1280){
 			@include x-rem(right, 141px);
+		}
+		@include r(1440){
+			@include x-rem(right, 101px);
 		}
 		.presents-article{
 			@include x-rem(font-size,12px);
@@ -3590,9 +3674,13 @@ body {
 				.wrapper-textarea{
 					position: relative;
 					z-index: 4;
-					background:linear-gradient(transparent 24px,$white 2px);
-				  background-size: 100% 25px;
+					background:linear-gradient(transparent 29px,$white 1px);
+				  background-size: 400px 29px;
 				  background-repeat:round;
+				  @include r(1280){
+				  	background:linear-gradient(transparent 24px,$white 1px);
+				  background-size: 400px 25px;
+				  }
 				  .form__input{
 				  	position: relative;
 				  	border-bottom:none;
@@ -3601,4 +3689,86 @@ body {
 			}
 		}
 	}
+}
+//404
+.wrapper-error{
+	position: relative;
+	height:100vh;
+		.letters {
+			text-align: center;
+		.letters_item {
+			&.letters-a {
+				position: relative;
+				margin-top: 50vh;
+				display:inline-block;
+				animation: errbg 60s linear infinite;
+			}
+		}
+	}
+}
+.error__container{
+	@include x-rem(max-width, 1100px);
+	@include x-rem(max-height, 700px);
+	display:block;
+	margin:auto;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index: 1;
+	text-align:center;
+	.error__text{
+ 	@include x-rem(font-size, 300px);
+  	color: $red;
+  	text-transform: uppercase;
+  	line-height:1.5;
+	font-family:$PragmaticaBlack;
+	font-weight:700;
+	animation: err 60s linear infinite;
+	}
+	.error__msg{
+  @include x-rem(font-size, 36px);
+  font-family:$PragmaticaBlack;
+  color: $white;
+  font-weight: 400;
+  line-height: 1.22;
+	@include x-rem(padding-left, 250px);
+	@include x-rem(letter-spacing, 2px);
+	animation: errsm 60s linear infinite;
+	}
+@keyframes err {
+  0% {
+    transform:translate3d(0);
+  }
+ 50%{
+    transform:translate3d(-10%,-23%,0);
+  }
+  100% {
+    transform:translate3d(0);
+  }
+
+}
+ @keyframes errsm {
+  0% {
+    transform:translate3d(0);
+  }
+ 50%{
+    transform:translate3d(10%,0,0);
+  }
+  100% {
+    transform:translate3d(0);
+  }
+}
+ @keyframes errbg {
+  0% {
+    transform:translate3d(0);
+  }
+ 50%{
+    transform:translate3d(-10%,0,0);
+  }
+  100% {
+    transform:translate3d(0);
+  }
+}
 }
